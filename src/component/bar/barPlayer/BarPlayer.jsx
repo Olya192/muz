@@ -2,6 +2,7 @@ import { Controls } from './Controls'
 import { Player } from './Player'
 import React from "react"
 
+
 export function BarPlayer() {
   return (
     <React.Fragment>
