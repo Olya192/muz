@@ -1,4 +1,4 @@
-import { BarPlayer } from './bar/temp/BarPlayer'
+import { BarPlayer } from './bar/barPlayer/BarPlayer'
 import { Main } from './main/Main'
 
 export function Container() {
