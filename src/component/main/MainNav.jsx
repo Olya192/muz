@@ -1,6 +1,6 @@
-import { LogoImage} from './MainNav/LogoImage'
-import { NavBurger } from './MainNav/NavBurger'
-import { MenuList } from './MainNav/NavMenu'
+import { LogoImage} from './mainNav/LogoImage'
+import { NavBurger } from './mainNav/NavBurger'
+import { MenuList } from './mainNav/NavMenu'
 
 export function MainNav() {
   return (

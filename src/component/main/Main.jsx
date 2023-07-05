@@ -1,9 +1,9 @@
 import { MainNav } from './MainNav'
-import { MainSidebar } from './MainSidebar/MainSidebar'
-import { CenterBlockSearch } from './main__centerblock/Centerblock/CenterblockSearch'
-import { CenterBlockFilter } from './main__centerblock/CenterblockFilter'
-import { items } from './main__centerblock/ContentPlaylist/Item'
-import { PlayListItem } from './main__centerblock/ContentPlaylist/PlaylistItem'
+import { MainSidebar } from './mainSidebar/MainSidebar'
+import { CenterBlockSearch } from './mainCenterblock/centerblock/CenterblockSearch'
+import { CenterBlockFilter } from './mainCenterblock/CenterblockFilter'
+import { items } from './mainCenterblock/contentPlaylist/Item'
+import { PlayListItem } from './mainCenterblock/contentPlaylist/PlaylistItem'
 
 
 export function Main() {
