@@ -4,9 +4,20 @@ import { CenterBlockSearch } from './mainCenterblock/centerblock/CenterblockSear
 import { CenterBlockFilter } from './mainCenterblock/CenterblockFilter'
 import { items } from './mainCenterblock/contentPlaylist/Item'
 import { PlayListItem } from './mainCenterblock/contentPlaylist/PlaylistItem'
+import { useEffect, useState } from 'react'
+import { SkeletonTheme } from 'react-loading-skeleton';
+
 
 
 export function Main() {
+  const [loading,setLoading] = useState(true)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 5000);
+    return () => clearTimeout(timer)
+    }, [])
+
   return (
     <main className="main">
       <MainNav />
@@ -18,13 +29,12 @@ export function Main() {
         <div className="centerblock__filter filter">
           <CenterBlockFilter />
         </div>
-        <div className="centerblock__content">
-          <CenterBlockFilter />
-          <div className="content__playlist playlist">
+        <div className="centerblock__content"> <SkeletonTheme baseColor="#313131" highlightColor="#444">
+                <div className="content__playlist playlist">
             {items.map((item,index) => (
-              <PlayListItem key= {index} item={item} />
+              <PlayListItem key= {index} item={item} loading={loading} />
             ))}
-          </div>
+          </div> </SkeletonTheme>
         </div>
       </div>
       <MainSidebar />
