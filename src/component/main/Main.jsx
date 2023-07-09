@@ -11,10 +11,11 @@ import { SkeletonTheme } from 'react-loading-skeleton';
 
 export function Main() {
   const [loading,setLoading] = useState(true)
- useEffect(() => {
-    setTimeout(() => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
       setLoading(false)
     }, 5000);
+    return () => clearTimeout(timer)
     }, [])
 
   return (
