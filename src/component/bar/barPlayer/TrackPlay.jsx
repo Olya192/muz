@@ -1,23 +1,25 @@
+import * as S from './TrackPlay.Styles'
+
 export function TrackPlay() {
-    return (
-      <>
-        <div className="track-play__contain">
-        <div className="track-play__image">
-          <svg className="track-play__svg" alt="music">
+  return (
+    <>
+      <S.TrackPlayContain>
+        <S.TrackPlayImage>
+          <S.TrackPlaySvg alt="music">
             <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-          </svg>
-        </div>
-        <div className="track-play__author">
-          <a className="track-play__author-link" href="http://">
+          </S.TrackPlaySvg>
+        </S.TrackPlayImage>
+        <S.TrackPlayAuthor>
+          <S.TrackPlayAuthorLink href="http://">
             Ты та...
-          </a>
-        </div>
-        <div className="track-play__album">
-          <a className="track-play__album-link" href="http://">
+          </S.TrackPlayAuthorLink>
+        </S.TrackPlayAuthor>
+        <S.TrackPlayAlbum>
+          <S.TrackPlayAlbumLink href="http://">
             Баста
-          </a>
-        </div>
-      </div>
-      </>
-    )
-  }
+          </S.TrackPlayAlbumLink>
+        </S.TrackPlayAlbum>
+      </S.TrackPlayContain>
+    </>
+  )
+}

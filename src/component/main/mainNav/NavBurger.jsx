@@ -1,11 +1,13 @@
 import React from "react"
+import * as S from './NavBurger.Styles'
+
 
 export function NavBurger() {
   return (
     <React.Fragment>
-      <span className="burger__line"></span>
-      <span className="burger__line"></span>
-      <span className="burger__line"></span>
+      <S.BurgerLine></S.BurgerLine>
+      <S.BurgerLine></S.BurgerLine>
+      <S.BurgerLine></S.BurgerLine>
     </React.Fragment>
   )
 }

@@ -1,5 +1,8 @@
+import * as S from './LogoImage.Styles'
+
+
 export function LogoImage() {
     return(
-        <img className="logo__image" src="img/logo.png" alt="logo"></img> 
+        <S.LogoImage src="img/logo.png" alt="logo"></S.LogoImage> 
     )
 }

@@ -2,6 +2,8 @@ import { LogoImage } from './mainNav/LogoImage'
 import { NavBurger } from './mainNav/NavBurger'
 import { MenuList } from './mainNav/NavMenu'
 import { useState } from "react"
+import * as S from './MainNav.styles'
+
 
 export function MainNav() {
   const [clicks, setClicks] = useState(false)
@@ -9,17 +11,17 @@ export function MainNav() {
   const handClick = () => setClicks(!clicks)
 
   return (
-    <nav className="main__nav nav">
-      <div className="nav__logo logo">
+    <S.MainNav>
+      <S.NavLogo>
         <LogoImage />
-      </div>
-      <div className="nav__burger burger" onClick={handClick}>
+      </S.NavLogo>
+      <S.NavBurger onClick={handClick}>
         {' '}
         <NavBurger />
-      </div>
-      <div className="nav__menu menu">
+      </S.NavBurger>
+      <S.NavMenu>
         {clicks && <MenuList />}
-      </div>
-    </nav>
+      </S.NavMenu>
+    </S.MainNav>
   )
 }

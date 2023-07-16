@@ -1,21 +1,23 @@
+import * as S from './NavMenu.Styles'
+
 export function MenuList() {
   return (
-    <ul className="menu__list">
-      <li className="menu__item">
-        <a href="http://" className="menu__link">
+    <S.MenuList>
+      <S.MenuItem>
+        <S.MenuLink href="http://" >
           Главное
-        </a>
-      </li>
-      <li className="menu__item">
-        <a href="http://" className="menu__link">
+        </S.MenuLink>
+      </S.MenuItem>
+      <S.MenuItem>
+        <S.MenuLink href="http://" >
           Мой плейлист
-        </a>
-      </li>
-      <li className="menu__item">
-        <a href="http://" className="menu__link">
+        </S.MenuLink>
+      </S.MenuItem>
+      <S.MenuItem>
+        <S.MenuLink href="http://" >
           Войти
-        </a>
-      </li>
-    </ul>
+        </S.MenuLink>
+      </S.MenuItem>
+    </S.MenuList>
   )
 }

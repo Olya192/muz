@@ -1,11 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
-import { Container } from './component/Container';
+import logo from './logo.svg'
+import { Container } from './component/Container'
+import { GlobalStyle } from './component/ContainerStyles'
 
 function App() {
   return (
-    <Container/>
-  );
+    <>
+      <GlobalStyle />
+      <Container />
+    </>
+  )
 }
 
-export default App;
+export default App

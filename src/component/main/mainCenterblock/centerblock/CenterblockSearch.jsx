@@ -1,16 +1,18 @@
 import { Search } from './SearchSvg'
 import React from "react"
+import * as S from './CenterblockSearch.Styles'
+
+
 
 export function CenterBlockSearch() {
   return (
     <React.Fragment>
-      <svg className="search__svg"><Search/></svg>
-      <input
-        className="search__text"
+      <S.SearchSvg><Search/></S.SearchSvg>
+      <S.SearchText
         type="search"
         placeholder="Поиск"
         name="search"
-      ></input>
+      ></S.SearchText>
     </React.Fragment>
   )
 }
