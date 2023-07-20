@@ -1,16 +1,18 @@
+import { styled } from 'styled-components'
 import { BarPlayer } from './bar/barPlayer/BarPlayer'
 import { Main } from './main/Main'
+import * as S from './ContainerStyles'
 
 export function Container() {
 
   return (
-    <div className="container">
+    <S.Container>
        <Main />
-      <div className="bar">
+      <S.Bar >
       <BarPlayer/>
-      </div>
+      </S.Bar>
       <footer className="footer"></footer>
-    </div>
+    </S.Container>
   )
 }
 

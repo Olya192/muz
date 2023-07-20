@@ -1,13 +1,17 @@
 import { SidebarBlock } from "./SidebarBlock";
 import { SidebarPersonal } from "./SidebarPersonal";
+import * as S from './MainSidebar.Styles'
+
+
+
 
 export function MainSidebar() {
     return (
-        <div className="main__sidebar sidebar">
+        <S.MainSidebar>
       <SidebarPersonal/>
-        <div className="sidebar__block">
+        <S.MainSidebarBlock>
           <SidebarBlock/> 
-        </div>
-    </div>
+        </S.MainSidebarBlock>
+    </S.MainSidebar>
     )
   }

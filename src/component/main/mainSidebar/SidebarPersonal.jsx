@@ -1,8 +1,11 @@
+import * as S from './SidebarPersonal.Styles'
+
+
 export function SidebarPersonal() {
   return (
-    <div className="sidebar__personal">
-      <p className="sidebar__personal-name">Sergey.Ivanov</p>
-      <div className="sidebar__avatar"></div>
-    </div>
+    <S.SidebarPersonal>
+      <S.SidebarPersonalName>Sergey.Ivanov</S.SidebarPersonalName>
+      <S.SidebarAvatar></S.SidebarAvatar>
+    </S.SidebarPersonal>
   )
 }

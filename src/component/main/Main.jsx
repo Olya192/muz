@@ -6,6 +6,8 @@ import { items } from './mainCenterblock/contentPlaylist/Item'
 import { PlayListItem } from './mainCenterblock/contentPlaylist/PlaylistItem'
 import { useEffect, useState } from 'react'
 import { SkeletonTheme } from 'react-loading-skeleton';
+import * as S from './Main.Styles'
+
 
 
 
@@ -19,25 +21,25 @@ export function Main() {
     }, [])
 
   return (
-    <main className="main">
+    <S.Main>
       <MainNav />
-      <div className="main__centerblock centerblock">
-        <div className="centerblock__search search">
+      <S.MainCentrblock>
+        <S.CenterblockSearch>
           <CenterBlockSearch />
-        </div>
-        <h2 className="centerblock__h2">Треки</h2>
-        <div className="centerblock__filter filter">
+        </S.CenterblockSearch>
+        <S.CenterblockH2>Треки</S.CenterblockH2>
+        <S.CenterblockFilter>
           <CenterBlockFilter />
-        </div>
-        <div className="centerblock__content"> <SkeletonTheme baseColor="#313131" highlightColor="#444">
-                <div className="content__playlist playlist">
+        </S.CenterblockFilter>
+        <S.CenterblockContent> <SkeletonTheme baseColor="#313131" highlightColor="#444">
+                <S.ContentPlaylist>
             {items.map((item,index) => (
               <PlayListItem key= {index} item={item} loading={loading} />
             ))}
-          </div> </SkeletonTheme>
-        </div>
-      </div>
+          </S.ContentPlaylist> </SkeletonTheme>
+        </S.CenterblockContent>
+      </S.MainCentrblock>
       <MainSidebar />
-    </main>
+    </S.Main>
   )
 }

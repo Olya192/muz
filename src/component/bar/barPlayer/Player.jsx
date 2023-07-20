@@ -1,12 +1,14 @@
 import { TrackPlay } from "./TrackPlay";
 import { TrackPlayLike } from "./TrackPlayLike";
+import * as S from './Player.Styles'
+
 
 export function Player() {
   return (
-    <div className="player__track-play track-play">
-      <TrackPlay/>
+    <S.PlayerTrackPlay>
+        <TrackPlay/>
       <TrackPlayLike/>
-    </div>
+    </S.PlayerTrackPlay>
   )
 }
 
