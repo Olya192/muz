@@ -1,6 +1,6 @@
-import { LogoImage } from './mainNav/LogoImage'
-import { NavBurger } from './mainNav/NavBurger'
-import { MenuList } from './mainNav/NavMenu'
+import { LogoImage } from './logoImage/LogoImage'
+import { NavBurger } from './navBurger/NavBurger'
+import { MenuList } from './navMenu/NavMenu'
 import { useState } from "react"
 import * as S from './MainNav.styles'
 

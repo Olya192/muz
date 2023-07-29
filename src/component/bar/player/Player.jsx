@@ -1,5 +1,5 @@
-import { TrackPlay } from "./TrackPlay";
-import { TrackPlayLike } from "./TrackPlayLike";
+import { TrackPlay } from "../trackPlay/TrackPlay";
+import { TrackPlayLike } from "../trackPlayLike/TrackPlayLike";
 import * as S from './Player.Styles'
 
 
