@@ -11,14 +11,12 @@ import * as S from './Main.Styles'
 
 
 
-export function Main() {
-  const [loading,setLoading] = useState(true)
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false)
-    }, 5000);
-    return () => clearTimeout(timer)
-    }, [])
+export function Main( {items, loading, handleSelectedTrack}) {
+
+  const stub = Array(10).fill({name: 'Guilt',
+  author: 'Nero',
+  album: 'Welcome Reality',
+  duration_in_seconds: '4:44'})
 
   return (
     <S.Main>
@@ -33,8 +31,12 @@ export function Main() {
         </S.CenterblockFilter>
         <S.CenterblockContent> <SkeletonTheme baseColor="#313131" highlightColor="#444">
                 <S.ContentPlaylist>
-            {items.map((item,index) => (
+            {loading
+            ? stub?.map((item,index) => (
               <PlayListItem key= {index} item={item} loading={loading} />
+            )) 
+            : items?.map((item,index) => (
+              <PlayListItem onClick = {() => handleSelectedTrack(item)} key= {index} item={item} loading={loading} />
             ))}
           </S.ContentPlaylist> </SkeletonTheme>
         </S.CenterblockContent>

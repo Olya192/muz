@@ -3,7 +3,7 @@ import { Player } from '../player/Player'
 import React from 'react'
 import * as S from './BarPlayer.Styles'
 
-export function BarPlayer() {
+export function BarPlayer({ selectedTrack }) {
   return (
     <React.Fragment>
       <S.BarContent>
@@ -12,7 +12,7 @@ export function BarPlayer() {
           <S.BarPlayerControls>
             <Controls />
           </S.BarPlayerControls>
-          <Player />
+          <Player selectedTrack={selectedTrack} />
           <S.BarVolumeBlock>
             <S.BarVolumeContent>
               <S.BarVolumeImage>
