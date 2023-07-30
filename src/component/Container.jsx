@@ -9,15 +9,21 @@ export function Container() {
   const [items, setItems] = useState()
   const [loading, setLoading] = useState(true)
   const [selectedTrack, setSelectedTrack] = useState(null)
+  const [addTodoError, setAddTodoError] = useState(null)
+
   const handleSelectedTrack = (item) => {
     setSelectedTrack(item)
   }
 
   useEffect(() => {
-    getTodos().then((items) => {
-      setItems(items)
-      setLoading(false)
-    })
+    try {
+      getTodos().then((items) => {
+        setItems(items)
+        setLoading(false)
+      })
+    } catch (error) {
+      setAddTodoError(error.message)
+    }
   }, [])
 
   return (
@@ -27,6 +33,7 @@ export function Container() {
         setItems={setItems}
         loading={loading}
         handleSelectedTrack={handleSelectedTrack}
+        setAddTodoError = {setAddTodoError}
       />
       <S.Bar>
         {selectedTrack ? <BarPlayer selectedTrack={selectedTrack} /> : null}

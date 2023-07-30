@@ -11,7 +11,7 @@ import * as S from './Main.Styles'
 
 
 
-export function Main( {items, loading, handleSelectedTrack}) {
+export function Main( {items, loading, handleSelectedTrack, setAddTodoError}) {
 
   const stub = Array(10).fill({name: 'Guilt',
   author: 'Nero',
@@ -29,6 +29,7 @@ export function Main( {items, loading, handleSelectedTrack}) {
         <S.CenterblockFilter>
           <CenterBlockFilter />
         </S.CenterblockFilter>
+        <p>{setAddTodoError}</p>
         <S.CenterblockContent> <SkeletonTheme baseColor="#313131" highlightColor="#444">
                 <S.ContentPlaylist>
             {loading
