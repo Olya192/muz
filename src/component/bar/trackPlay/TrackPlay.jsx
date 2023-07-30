@@ -1,6 +1,6 @@
 import * as S from './TrackPlay.Styles'
 
-export function TrackPlay() {
+export function TrackPlay({selectedTrack}) {
   return (
     <>
       <S.TrackPlayContain>
@@ -11,12 +11,12 @@ export function TrackPlay() {
         </S.TrackPlayImage>
         <S.TrackPlayAuthor>
           <S.TrackPlayAuthorLink href="http://">
-            Ты та...
+       {selectedTrack?.name}
           </S.TrackPlayAuthorLink>
         </S.TrackPlayAuthor>
         <S.TrackPlayAlbum>
           <S.TrackPlayAlbumLink href="http://">
-            Баста
+          {selectedTrack?.author}
           </S.TrackPlayAlbumLink>
         </S.TrackPlayAlbum>
       </S.TrackPlayContain>
