@@ -6,9 +6,8 @@ display: flex;
   flex-direction: column;
 `
 export const BarPlayerProgress = styled.div`
-width: 100%;
-  height: 5px;
-  background: #2e2e2e;
+  height: 16px;
+  background: rgba(182, 114, 255, 1);
 `
 export const BarPlayerBlock = styled.div`
 height: 73px;
@@ -57,4 +56,8 @@ width: 109px;
 export const BarVolumeProgressLine = styled.input`
 width: 109px;
 `
-
+export const TimeBar = styled.div`
+display: flex;
+    flex-direction: row-reverse;
+    
+`
