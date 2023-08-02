@@ -8,16 +8,18 @@ export const PlayerBth = styled.div`
 
 export const PlayerBthPrev = styled(PlayerBth)`
   margin-right: 23px;
-`
+  fill: rgba(217, 217, 217, 1);
+  `
 
 export const PlayerBthPlay = styled(PlayerBth)`
   margin-right: 23px;
   cursor: pointer;
+  fill: rgba(217, 217, 217, 1);
 `
 
 export const PlayerBthNext = styled(PlayerBth)`
   margin-right: 28px;
-  fill: #a53939;
+  fill: rgba(217, 217, 217, 1);
 `
 
 export const PlayerRepeat = styled(PlayerBth)`
@@ -37,7 +39,7 @@ export const PlayerBthPrevSvg = styled.svg`
 export const PlayerBthPlaySvg = styled.svg`
   width: 22px;
   height: 20px;
-  fill: #d9d9d9;
+  fill: inherit;
 `
 
 export const PlayerBthNextSvg = styled.svg`

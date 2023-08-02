@@ -3,7 +3,7 @@ import { BarPlayer } from './bar/barPlayer/BarPlayer'
 import { Main } from './main/Main'
 import * as S from './ContainerStyles'
 import { getTodos } from '../api'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export function Container() {
   const [items, setItems] = useState()
@@ -16,14 +16,14 @@ export function Container() {
   }
 
   useEffect(() => {
-    try {
-      getTodos().then((items) => {
+    getTodos()
+      .then((items) => {
         setItems(items)
         setLoading(false)
       })
-    } catch (error) {
-      setAddTodoError(error.message)
-    }
+      .catch((error) => {
+        setAddTodoError(error.message)
+      })
   }, [])
 
   return (
@@ -33,10 +33,16 @@ export function Container() {
         setItems={setItems}
         loading={loading}
         handleSelectedTrack={handleSelectedTrack}
-        setAddTodoError = {setAddTodoError}
+        setAddTodoError={setAddTodoError}
       />
       <S.Bar>
-        {selectedTrack ? <BarPlayer selectedTrack={selectedTrack} /> : null}
+        {selectedTrack ? (
+          <BarPlayer
+            selectedTrack={selectedTrack}
+            setSelectedTrack={setSelectedTrack}
+            items={items}
+          />
+        ) : null}
       </S.Bar>
       <footer className="footer"></footer>
     </S.Container>
