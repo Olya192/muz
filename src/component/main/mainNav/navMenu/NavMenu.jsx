@@ -1,6 +1,16 @@
+import { useSetUser } from '../../../../context/user'
 import * as S from './NavMenu.Styles'
 
 export function MenuList() {
+
+  const setUser = useSetUser()
+
+  const logOutHandle = () => {
+    localStorage.removeItem("user")
+    localStorage.removeItem("token")
+    setUser(null)
+  }
+
   return (
     <S.MenuList>
       <S.MenuItem>
@@ -14,8 +24,8 @@ export function MenuList() {
         </S.MenuLink>
       </S.MenuItem>
       <S.MenuItem>
-        <S.MenuLink to="/login" >
-          Войти
+        <S.MenuLink to="/login" onClick={logOutHandle}>
+          Выйти
         </S.MenuLink>
       </S.MenuItem>
     </S.MenuList>
