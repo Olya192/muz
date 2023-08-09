@@ -1,10 +1,16 @@
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import * as S from './PlaylistItem.styles'
+import { getPlayTrack, getSetTrack } from '../../../../store/selectors/tracksSelectors'
+import { useSelector } from 'react-redux'
 
 
 
 export function PlayListItem({ item, loading, onClick }) {
+
+  const selectedTrack = useSelector(getSetTrack)
+const isPlaying = useSelector(getPlayTrack)
+
   return (
     <S.PlaylistItem>
       <S.PlaylistTrack>
@@ -15,6 +21,7 @@ export function PlayListItem({ item, loading, onClick }) {
             ) : (
               < S.TrackTitleSvg alt="music">
                 <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
+                {selectedTrack?.id === item.id ? <S.TrackPlay isPlaying={isPlaying}><use xlinkHref="img/icon/sprite.svg#icon-set"></use></S.TrackPlay> : ""}
               </ S.TrackTitleSvg>
             )}
           </ S.TrackTitleImg>
@@ -23,7 +30,7 @@ export function PlayListItem({ item, loading, onClick }) {
               <Skeleton count={1} />
             ) : (
               <S.TrackTitleLink onClick={onClick}>
-                 {item?.name}
+                {item?.name}
               </S.TrackTitleLink>
             )}
           </S.TrackTitleText>
