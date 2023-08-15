@@ -105,3 +105,14 @@ display: flex;
     flex-direction: row;
     align-items: center;
 `
+
+export const TrackPlay = styled.svg`
+${props => props.isPlaying && `animation: blink 0.8s infinite;`}
+fill: rgba(182, 114, 255, 1);
+@keyframes blink {
+  100%,
+  0% {fill: transparent;}
+  60% {fill: rgba(182, 114, 255, 1);}
+}
+
+`

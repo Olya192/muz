@@ -4,14 +4,23 @@ import React, { useEffect, useRef, useState } from 'react'
 import * as S from './BarPlayer.Styles'
 import { check } from 'prettier'
 import { formatTime } from '../../../utils/formatTime'
+import { useDispatch, useSelector } from 'react-redux'
+import { getPlayTrack } from '../../../store/selectors/tracksSelectors'
+import { setPlaying } from '../../../store/actions/creators/tracksCreators'
 
 export function BarPlayer({ selectedTrack, setSelectedTrack, items }) {
+
+  const dispatch = useDispatch()
+
   const clickRef = useRef()
   const audioElem = useRef()
-  const [isPlaying, setIsPlaying] = useState(true)
   const [volume, setVolume] = useState(60);
   const [isLoop, setIsLoop] = useState(false);
 
+
+
+  const isPlaying = useSelector(getPlayTrack)
+  const setIsPlaying = (el) => dispatch(setPlaying(el))
 
 
   useEffect(() => {
@@ -64,6 +73,39 @@ export function BarPlayer({ selectedTrack, setSelectedTrack, items }) {
     audioElem.current.currentTime = (divProgress / 100) * selectedTrack.length
   }
 
+  const skipNext = () => {
+    const index = items.findIndex((x) => x.id == selectedTrack.id)
+    const randomItems = items[Math.floor(Math.random() * items.length)]
+    if (index !== items.length - 1 && !isShuffle) {
+      setSelectedTrack(items[index + 1])
+      audioElem.current.currentTime = 0
+    } else if (isShuffle) {
+      setSelectedTrack(randomItems)
+    }
+  }
+
+  const [isShuffle, setIsShuffle] = useState(false)
+
+  const skipBack = () => {
+    const index = items.findIndex((x) => x.id == selectedTrack.id)
+    const randomItems = items[Math.floor(Math.random() * items.length)]
+
+    if (index !== 0 && !isShuffle) {
+      setSelectedTrack(items[index - 1])
+      audioElem.current.currentTime = 0
+    } else if (isShuffle) {
+      setSelectedTrack(randomItems)
+    }
+  }
+
+  const repeatLoop = () => {
+    setIsLoop(!isLoop)
+  }
+
+  const shufflePlay = () => {
+    setIsShuffle(!isShuffle)
+  }
+
   return (
     <React.Fragment>
       <S.BarContent>
@@ -84,21 +126,21 @@ export function BarPlayer({ selectedTrack, setSelectedTrack, items }) {
             style={{ visibility: 'hidden' }}
             loop={isLoop}
             autoPlay
-
+            onEnded={skipNext}
           >
             <source src={selectedTrack.track_file} type="audio/mpeg" />
             <track kind="captions" label="" />
           </audio>
           <S.BarPlayerControls>
             <Controls
-              audioElem={audioElem}
               changePlaying={changePlaying}
               isPlaying={isPlaying}
-              items={items}
-              selectedTrack={selectedTrack}
-              setSelectedTrack={setSelectedTrack}
-              setIsLoop={setIsLoop}
               isLoop={isLoop}
+              skipNext={skipNext}
+              shufflePlay={shufflePlay}
+              skipBack={skipBack}
+              isShuffle={isShuffle}
+              repeatLoop={repeatLoop}
             />
           </S.BarPlayerControls>
           <Player selectedTrack={selectedTrack} />
