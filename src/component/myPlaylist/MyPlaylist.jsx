@@ -4,6 +4,7 @@ import { Main } from './main/Main'
 import * as S from './MiPlaylist.Styles'
 
 export function MyPlaylist() {
+  
   return (
     <S.Container>
        <Main />

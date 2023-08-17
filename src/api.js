@@ -57,7 +57,33 @@ export async function postAuth(email, password) {
   return user
 }
 
+export async function postToken() {
+  return fetch("https://painassasin.online/user/token/", {
+    method: "POST",
+    body: JSON.stringify({
+      email: "gleb@fokin.ru",
+      password: "gleb@fokin.ru",
+    }),
+    headers: {
+      "content-type": "application/json",
+    },
+  })
+    .then((response) => response.json());
+
+}
 
 
+export async function getFavTrack(params) {
+  const accessToken = localStorage.getItem("token");
+
+return fetch("https://painassasin.online/catalog/track/favorite/all/", {
+  method: "GET",
+  headers: {
+    Authorization: `Bearer ${accessToken}`,
+  },
+})
+  .then((response) => response.json())
+  
+}
 
 

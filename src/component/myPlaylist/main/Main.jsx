@@ -8,14 +8,17 @@ import * as S from './Main.Styles'
 import { TrackList } from '../../trackList/TrackList'
 
 export function Main() {
-  
+
   const [loading, setLoading] = useState(true)
+
+  async function getTrakcs() {
+    const favTracks = await getFavTrack()
+  }
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false)
-    }, 5000)
-    return () => clearTimeout(timer)
+    getTrakcs()
   }, [])
+
+
 
   return (
     <S.Main>
@@ -24,7 +27,7 @@ export function Main() {
         <S.CenterblockSearch>
           <CenterBlockSearch />
         </S.CenterblockSearch>
-        <TrackList items={items} title = {`Мои треки`} loading = {loading}/>
+        <TrackList items={items} title={`Мои треки`} loading={loading} />
       </S.MainCentrblock>
     </S.Main>
   )

@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as S from "./Authorization.Styles";
 import { useEffect, useState } from "react";
 import logo from "./logo.png"
-import { postAuth, postRegist } from "../../api";
+import { postAuth, postRegist, postToken } from "../../api";
 import { useSetUser } from "../../context/user";
 
 
@@ -23,15 +23,16 @@ export function Authorization() {
     try {
       console.log('Старт');
       const user = await postAuth(email, password)
+      const token = await postToken()
       setUser(user)
-      localStorage.setItem("token", "token")
+      localStorage.setItem("tokenRefresh", token.refresh)
+      localStorage.setItem("token", token.access)
       localStorage.setItem("user", user.username)
       console.log('Все ок');
       navigate('/');
     } catch (error) {
       setError(error?.message)
     }
-
   };
 
   const handleRegister = async () => {
