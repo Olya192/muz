@@ -21,3 +21,33 @@ export const setPlaying = (isPlaying) => {
         payload: isPlaying
     }
 }
+
+export const setLoading = (loading) => {
+    return{
+        type: TRACKS_TYPE.SET_LOADING,
+        payload: loading
+    }
+}
+
+export const setError = (error) => {
+    return{
+        type: TRACKS_TYPE.SET_ERROR,
+        payload: error
+    }
+}
+
+export const setLike = ({user, id}) => {
+    return{
+        type: TRACKS_TYPE.SET_LIKE,
+        payload: user,
+        id: id
+    }
+}
+
+export const setDislike = ({user, id}) => {
+    return{
+        type: TRACKS_TYPE.SET_DISLIKE,
+        payload: user,
+        id: id
+    }
+}

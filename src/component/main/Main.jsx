@@ -2,23 +2,36 @@ import { MainNav } from './mainNav/MainNav'
 import { MainSidebar } from './mainSidebar/MainSidebar'
 import { CenterBlockSearch } from './mainCenterblock/centerblock/CenterblockSearch'
 import * as S from './Main.Styles'
-import { TrackList } from '../trackList/TrackList'
+import { BarPlayer } from '../bar/barPlayer/BarPlayer'
+import { useSelector } from 'react-redux'
+import { getSetTrack } from '../../store/selectors/tracksSelectors'
+import { cloneElement, useState } from 'react'
 
 
 
-
-export function Main( {items, loading, handleSelectedTrack, setAddTodoError}) {
+export function Main({ children }) {
+  const selectedTrack = useSelector(getSetTrack)
+  
 
   return (
-    <S.Main>
-      <MainNav />
-      <S.MainCentrblock>
-        <S.CenterblockSearch>
-          <CenterBlockSearch />
-        </S.CenterblockSearch>
-        <TrackList items={items} title = {`Треки`} loading = {loading} setAddTodoError = {setAddTodoError} handleSelectedTrack={handleSelectedTrack}/>
-      </S.MainCentrblock>
-      <MainSidebar />
-    </S.Main>
+    <S.Container>
+      <S.Main>
+        <MainNav />
+        <S.MainCentrblock>
+          <S.CenterblockSearch>
+            <CenterBlockSearch />
+          </S.CenterblockSearch>
+          {children};
+        </S.MainCentrblock>
+        <MainSidebar />
+      </S.Main>
+      <S.Bar>
+        {selectedTrack ? (
+          <BarPlayer />
+        ) : null}
+      </S.Bar>
+      <footer className="footer"></footer>
+    </S.Container>
+
   )
 }

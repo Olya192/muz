@@ -5,20 +5,27 @@ import * as S from './BarPlayer.Styles'
 import { check } from 'prettier'
 import { formatTime } from '../../../utils/formatTime'
 import { useDispatch, useSelector } from 'react-redux'
-import { getPlayTrack } from '../../../store/selectors/tracksSelectors'
-import { setPlaying } from '../../../store/actions/creators/tracksCreators'
+import { getTracklist, getSetTrack, getPlayTrack } from '../../../store/selectors/tracksSelectors'
+import { setPlaying, setTrack } from '../../../store/actions/creators/tracksCreators'
 
-export function BarPlayer({ selectedTrack, setSelectedTrack, items }) {
+export function BarPlayer() {
 
   const dispatch = useDispatch()
+
+
+  const items = useSelector(getTracklist)
+  const selectedTrack = useSelector(getSetTrack)
+  const setSelectedTrack = (el) => dispatch(setTrack(el))
+
+
 
   const clickRef = useRef()
   const audioElem = useRef()
   const [volume, setVolume] = useState(60);
   const [isLoop, setIsLoop] = useState(false);
 
-
-
+  const [progress, setProgress] = useState(0);
+  const [length, setLength] = useState(0)
   const isPlaying = useSelector(getPlayTrack)
   const setIsPlaying = (el) => dispatch(setPlaying(el))
 
@@ -57,12 +64,10 @@ export function BarPlayer({ selectedTrack, setSelectedTrack, items }) {
   const onPlaying = () => {
     const duration = audioElem.current.duration
     const currentTime = audioElem.current.currentTime
-
-    setSelectedTrack({
-      ...selectedTrack,
-      progress: (currentTime / duration) * 100,
-      length: duration,
-    })
+    setProgress((currentTime / duration) * 100)
+    if (length !== duration) {
+      setLength(duration)
+    }
   }
 
   const checkWidth = (e) => {
@@ -70,7 +75,7 @@ export function BarPlayer({ selectedTrack, setSelectedTrack, items }) {
     const offset = e.nativeEvent.offsetX
 
     const divProgress = (offset / widthAudio) * 100
-    audioElem.current.currentTime = (divProgress / 100) * selectedTrack.length
+    audioElem.current.currentTime = (divProgress / 100) * length
   }
 
   const skipNext = () => {
@@ -114,7 +119,7 @@ export function BarPlayer({ selectedTrack, setSelectedTrack, items }) {
         </S.TimeBar>
         <div onClick={checkWidth} ref={clickRef}>
           <S.BarPlayerProgress
-            style={{ width: `${selectedTrack.progress + '%'}` }}
+            style={{ width: `${progress + '%'}` }}
           ></S.BarPlayerProgress>
         </div>
 

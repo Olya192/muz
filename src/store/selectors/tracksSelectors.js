@@ -9,3 +9,10 @@ export function getPlayTrack(store) {
     return store.tracks.isPlaying
 }
 
+export function getLoading(store) {
+    return store.tracks.loading
+}
+
+export function getError(store) {
+    return store.tracks.error
+}
