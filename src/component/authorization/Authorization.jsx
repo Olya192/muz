@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as S from "./Authorization.Styles";
 import { useEffect, useState } from "react";
 import logo from "./logo.png"
-import { postAuth, postRegist } from "../../api";
+import { postAuth, postRegist, postToken } from "../../api";
 import { useSetUser } from "../../context/user";
 
 
@@ -23,15 +23,16 @@ export function Authorization() {
     try {
       console.log('Старт');
       const user = await postAuth(email, password)
+      const token = await postToken(email, password)
       setUser(user)
-      localStorage.setItem("token", "token")
-      localStorage.setItem("user", user.username)
+      localStorage.setItem("tokenRefresh", token.refresh)
+      localStorage.setItem("token", token.access)
+      localStorage.setItem("user", JSON.stringify(user))
       console.log('Все ок');
       navigate('/');
     } catch (error) {
       setError(error?.message)
     }
-
   };
 
   const handleRegister = async () => {
@@ -50,7 +51,7 @@ export function Authorization() {
       const user = await postRegist(email, password);
       setUser(user)
       localStorage.setItem("token", "token")
-      localStorage.setItem("user", user.username)
+      localStorage.setItem("user", JSON.stringify(user))
       navigate('/');
     } catch (error) {
       setError(error?.message)

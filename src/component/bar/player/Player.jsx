@@ -7,7 +7,7 @@ export function Player({selectedTrack}) {
   return (
     <S.PlayerTrackPlay>
         <TrackPlay selectedTrack={selectedTrack}/>
-      <TrackPlayLike/>
+      <TrackPlayLike />
     </S.PlayerTrackPlay>
   )
 }

@@ -2,14 +2,33 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import * as S from './PlaylistItem.styles'
 import { getPlayTrack, getSetTrack } from '../../../../store/selectors/tracksSelectors'
-import { useSelector } from 'react-redux'
-
-
+import { useDispatch, useSelector } from 'react-redux'
+import { postLike, deleteLike } from '../../../../api.js'
+import { useUser } from '../../../../context/user'
+import { setTrack, setLike, setDislike } from '../../../../store/actions/creators/tracksCreators'
 
 export function PlayListItem({ item, loading, onClick }) {
 
+  const dispatch = useDispatch()
+
+  const setCurrentTrack = (el) => dispatch(setTrack(el))
   const selectedTrack = useSelector(getSetTrack)
-const isPlaying = useSelector(getPlayTrack)
+  const isPlaying = useSelector(getPlayTrack)
+
+  const user = useUser()
+  const isLiked = !!item?.stared_user?.find((item) => item.id === user.id) || item?.stared_user === undefined
+
+  async function like() {
+    if (!isLiked) {
+      await postLike(item.id)
+      console.log("like");
+      dispatch(setLike({ id: item.id, user }))
+    } else {
+      await deleteLike(item.id)
+      console.log("dislike");
+      dispatch(setDislike({ id: item.id, user }))
+    }
+  }
 
   return (
     <S.PlaylistItem>
@@ -59,7 +78,7 @@ const isPlaying = useSelector(getPlayTrack)
           ) : (
             <>
               {' '}
-              <S.TrackTimeSvg alt="time">
+              <S.TrackTimeSvg alt="time" onClick={like} style={{ fill: isLiked ? "rgba(255, 255, 255, 1)" : "rgba(105, 105, 105, 1)" }}>
                 <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
               </S.TrackTimeSvg>
               <S.TrackTimeText>{item?.duration_in_seconds}</S.TrackTimeText>
