@@ -16,7 +16,8 @@ export function Container() {
 
   const changeLoading = (el) => dispatch(setLoading(el))
   const setAddTodoError = (el) => dispatch(setError(el))
-  const mainUpdate = () => {
+
+  useEffect(() => {
     changeLoading(true)
     setAddTodoError(false)
     getTodos()
@@ -28,10 +29,6 @@ export function Container() {
         setAddTodoError(error.message)
         changeLoading(false)
       })
-  }
-
-  useEffect(() => {
-    mainUpdate()
   }, [])
 
   return (
