@@ -7,7 +7,12 @@ export const INITIAL_STATE = {
     currentTrack: null,
     isPlaying: false,
     loading: false,
-    error: false
+    error: false,
+    filter: {
+        author: [],
+        years: [],
+        genre: []
+    }
 
 }
 
@@ -64,6 +69,20 @@ export function tracksReducer(state = INITIAL_STATE, action) {
 
                 return newState
             }
+        case TRACKS_TYPE.SET_FILTER:
+            {
+                const newState = deepCopy(state)
+                if (action.author) {
+                    newState.filter.author = action.author
+                } else if (action.years) {
+                    newState.filter.years = action.years
+                } else {
+                    newState.filter.genre = action.genre
+                }
+                
+                return newState
+            }
+
         default:
             return state;
     }

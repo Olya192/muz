@@ -9,14 +9,27 @@ font-style: normal;
   margin-bottom: 45px;
 `
 export const CenterblockContent = styled.div`
-display: flex;
-  flex-direction: column;
+height: -webkit-fill-available;
+flex-direction: column;
+display: contents;
 `
 export const ContentPlaylist = styled.div`
 display: flex;
   flex-direction: column;
-  overflow-y: auto;
-`
+  overflow-y: scroll;
+  height: auto;
+  scrollbar-gutter: stable both-edges;
+  padding-right: 10px;
+&::-webkit-scrollbar {
+    width: 7px;
+    background-color: rgba(75, 73, 73, 1);
+    border-radius: 3px;
+}
+&::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 3px;
+}
+  `
 export const CenterblockFilter = styled.div`
 display: flex;
   flex-direction: row;
