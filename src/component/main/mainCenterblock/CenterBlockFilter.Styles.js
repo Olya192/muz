@@ -52,13 +52,17 @@ export const DropdownButton = styled.button`
 export const DropdownContent = styled.div`
   display: none;
   position: absolute;
-  background-color: rgb(49, 49, 49);
-  min-width: 160px;
+  background-color: rgba(49, 49, 49, 1);
+  min-width: 180px;
+  border-radius: 12px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  color: rgba(255, 255, 255, 1);
   :hover {
-    background-color: #ddd;
+    color: rgba(182, 114, 255, 1);
+    text-decoration: underline
   }
+  p.active{color:rgba(182, 114, 255, 1)}
 
   ${(props) =>
     props.show &&
@@ -67,7 +71,10 @@ export const DropdownContent = styled.div`
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  color: rgba(255, 255, 255, 1);
   :hover {
-    background-color: #ddd;
+    color: 
+rgba(182, 114, 255, 1);
+text-decoration: underline
   }`}
 `

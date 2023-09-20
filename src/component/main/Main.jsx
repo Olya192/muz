@@ -21,7 +21,7 @@ export function Main({ children }) {
           <S.CenterblockSearch>
             <CenterBlockSearch />
           </S.CenterblockSearch>
-          {children};
+          {children}
         </S.MainCentrblock>
         <MainSidebar />
       </S.Main>

@@ -6,7 +6,7 @@ export function SidebarBlock() {
       <S.SidebarItem>
         <S.SidebarLink to="/category/1">
           <S.SidebarImg
-            src="img/playlist01.png"
+            src="img/Classic.png"
             alt="day's playlist"
           />
         </S.SidebarLink>
@@ -14,7 +14,7 @@ export function SidebarBlock() {
       <S.SidebarItem>
         <S.SidebarLink to="/category/2">
           <S.SidebarImg
-            src="img/playlist02.png"
+            src="img/Electro.png"
             alt="day's playlist"
           />
         </S.SidebarLink>
@@ -22,7 +22,7 @@ export function SidebarBlock() {
       <S.SidebarItem>
         <S.SidebarLink to="/category/3">
           <S.SidebarImg
-            src="img/playlist03.png"
+            src="img/Pock.png"
             alt="day's playlist"
           />
         </S.SidebarLink>

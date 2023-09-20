@@ -30,11 +30,11 @@ export function CategoryOne() {
         setAddTodoError(error.message)
         changeLoading(false)
       })
-  }, [])
+  }, [params.id])
 
   return (
     <TrackList
-      title={params.id === '1' ? 'Плейлист дня' : params.id === '2' ? '100 танцевальных хитов' : 'Инди заряд'}
+      title={params.id === '1' ? 'Классическая музыка' : params.id === '2' ? 'Электронная музыка' : 'Рок музыка'}
     />
   )
 }

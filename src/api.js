@@ -1,5 +1,5 @@
 export async function getTodos() {
-  const response = await fetch('https://painassasin.online/catalog/track/all/')
+  const response = await fetch('https://skypro-music-api.skyeng.tech/catalog/track/all/')
   if (!response.ok) {
     throw new Error('Ошибка сервера')
   }
@@ -9,7 +9,7 @@ export async function getTodos() {
 
 
 export async function postRegist(email, password) {
-  const response = await fetch('https://painassasin.online/user/signup/', {
+  const response = await fetch('https://skypro-music-api.skyeng.tech/user/signup/', {
     method: "POST",
     body: JSON.stringify({
       email: email,
@@ -35,7 +35,7 @@ export async function postRegist(email, password) {
 }
 
 export async function postAuth(email, password) {
-  const response = await fetch("https://painassasin.online/user/login/", {
+  const response = await fetch("https://skypro-music-api.skyeng.tech/user/login/", {
     method: "POST",
     body: JSON.stringify({
       email: email,
@@ -60,7 +60,7 @@ export async function postAuth(email, password) {
 }
 
 export async function postToken(email, password) {
-  return fetch("https://painassasin.online/user/token/", {
+  return fetch("https://skypro-music-api.skyeng.tech/user/token/", {
     method: "POST",
     body: JSON.stringify({
       email: email,
@@ -76,7 +76,7 @@ export async function postToken(email, password) {
 
 export async function postNewToken() {
   const refreshToken = localStorage.getItem("tokenRefresh");
-  return fetch("https://painassasin.online/user/token/refresh/", {
+  return fetch("https://skypro-music-api.skyeng.tech/user/token/refresh/", {
     method: "POST",
     body: JSON.stringify({
       refresh:
@@ -94,7 +94,7 @@ export async function postNewToken() {
 export async function getFavTrack() {
   const accessToken = localStorage.getItem("token");
 
-  const response = await fetch("https://painassasin.online/catalog/track/favorite/all/", {
+  const response = await fetch("https://skypro-music-api.skyeng.tech/catalog/track/favorite/all/", {
     method: "GET",
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -113,7 +113,7 @@ export async function getFavTrack() {
 
 export async function getCategoryTracks(id) {
 
-  const response = await fetch(`https://painassasin.online/catalog/selection/${id}`)
+  const response = await fetch(`https://skypro-music-api.skyeng.tech/catalog/selection/${id}`)
   if (!response.ok) {
     throw new Error('Ошибка сервера')
   }
@@ -124,7 +124,7 @@ export async function getCategoryTracks(id) {
 
 export async function postLike(id) {
   const accessToken = localStorage.getItem("token");
-  return fetch(`https://painassasin.online/catalog/track/${id}/favorite/`, {
+  return fetch(`https://skypro-music-api.skyeng.tech/catalog/track/${id}/favorite/`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -143,7 +143,7 @@ export async function postLike(id) {
 
 export async function deleteLike(id) {
   const accessToken = localStorage.getItem("token");
-  return fetch(`https://painassasin.online/catalog/track/${id}/favorite/`, {
+  return fetch(`https://skypro-music-api.skyeng.tech/catalog/track/${id}/favorite/`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${accessToken}`,

@@ -16,3 +16,7 @@ export function getLoading(store) {
 export function getError(store) {
     return store.tracks.error
 }
+
+export function getFilter(store) {
+    return store.tracks.filter
+}
